@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: docker-testing_development
+
+test:
+  <<: *default
+  database: docker-testing_test
+
+production:
+  <<: *default
+  database: docker-testing_production
+  username: docker-testing
+  password: <%= ENV['docker-testing_DATABASE_PASSWORD'] %>
